@@ -20,7 +20,7 @@ class NotesInput extends React.Component {
       maxLength_content: 750,
     };
   }
-
+  // TITLE
   onChangeTitle(event) {
     this.setState(() => {
       return {
@@ -41,7 +41,7 @@ class NotesInput extends React.Component {
     document.querySelector('#TitleCount').style.color = 'black';
     document.querySelector('.InputTitle').style.color = 'black';
   }
-
+  // CONTENT
   onChangeContent(event) {
     this.setState(() => {
       return {
@@ -62,37 +62,29 @@ class NotesInput extends React.Component {
     document.querySelector('#ContentCount').style.color = 'black';
     document.querySelector('.InputContent').style.color = 'black';
   }
-
+  // SUBMIT
   onSubmit(event) {
     event.preventDefault();
 
-    if (this.state.title.length === 0 || this.state.body.length === 0) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Gagal',
-        text: 'Catatan harus diisi.',
-      });
-    } else {
-      const addNotes = {
-        title: this.state.title,
-        body: this.state.body,
+    const addNotes = {
+      title: this.state.title,
+      body: this.state.body,
+    };
+    this.props.addNotes(addNotes);
+
+    this.setState(() => {
+      return {
+        title: '',
+        body: '',
+
+        title_length: 0,
+        content_length: 0,
+        maxLength_title: 35,
+        maxLength_content: 750,
       };
-      this.props.addNotes(addNotes);
+    });
 
-      this.setState(() => {
-        return {
-          title: '',
-          body: '',
-
-          title_length: 0,
-          content_length: 0,
-          maxLength_title: 35,
-          maxLength_content: 750,
-        };
-      });
-
-      Swal.fire('Berhasil', 'Catatan anda tersimpan', 'success');
-    }
+    Swal.fire('Berhasil', 'Catatan anda tersimpan', 'success');
   }
 
   render() {
@@ -109,6 +101,7 @@ class NotesInput extends React.Component {
               onChange={this.onChangeTitle}
               onBlur={this.onBlurTitle}
               maxLength="35"
+              minLength="5"
               required
             />
             <span id="TitleCount">
@@ -122,6 +115,7 @@ class NotesInput extends React.Component {
               onChange={this.onChangeContent}
               onBlur={this.onBlurContent}
               maxLength="750"
+              minLength="10"
               required
             />
             <span id="ContentCount">
