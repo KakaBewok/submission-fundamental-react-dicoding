@@ -6,23 +6,25 @@ import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-import {
-  getAllNotes,
-  getNote,
-  editNote,
-  deleteNote,
-} from '../utils/local-data';
+import { useNavigate } from 'react-router-dom';
+import { getAllNotes, deleteNote } from '../utils/local-data';
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get('keyword');
+
+  const navigate = useNavigate();
 
   function changeSearchParams(keyword) {
     setSearchParams({ keyword });
   }
 
   return (
-    <HomePage defaultKeyword={keyword} keywordChange={changeSearchParams} />
+    <HomePage
+      defaultKeyword={keyword}
+      keywordChange={changeSearchParams}
+      navigate={navigate}
+    />
   );
 }
 
@@ -40,24 +42,20 @@ class HomePage extends React.Component {
   }
 
   onDeleteHandler(id) {
-    deleteNote(id);
-
-    // update the contact state from data.js
-    this.setState(() => {
-      return {
-        notes: getAllNotes(),
-      };
-    });
-
-    Swal.fire('Berhasil', 'Catatan anda terhapus', 'danger');
-  }
-  onEditHandler({ id, title, body }) {
-    editNote({ id, title, body });
-
-    this.setState(() => {
-      return {
-        notes: getAllNotes(),
-      };
+    Swal.fire({
+      title: 'Apakah anda yakin menghapus catatan ini?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNote(id);
+        this.setState(() => {
+          return {
+            notes: getAllNotes(),
+          };
+        });
+        Swal.fire('Berhasil', 'Catatan anda terhapus', 'danger');
+      }
     });
   }
   onKeywordChangeHandler(keyword) {
@@ -79,15 +77,14 @@ class HomePage extends React.Component {
     return (
       <section className="HomeWrapper">
         <h3 className="NotesList_title">Notes List</h3>
+        <p className="NumberofNotes">
+          Number of Notes: {this.state.notes.length}
+        </p>
         <SearchBar
           keyword={this.state.keyword}
           keywordChange={this.onKeywordChangeHandler}
         />
-        <NotesList
-          notes={notes}
-          onEdit={this.onEditHandler}
-          onDelete={this.onDeleteHandler}
-        />
+        <NotesList notes={notes} onDelete={this.onDeleteHandler} />
         <Link to="/notes/new" className="AddFloat">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -116,6 +113,7 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
   defaultKeyword: PropTypes.string,
   keywordChange: PropTypes.func.isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 export default HomePageWrapper;

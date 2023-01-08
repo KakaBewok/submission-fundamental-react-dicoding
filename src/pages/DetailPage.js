@@ -1,29 +1,53 @@
 import React from 'react';
-import NotesItem from '../components/NotesItem';
+import DetailNote from '../components/DetailNote';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { getNote, deleteNote } from '../utils/local-data';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
+function DetailPageWrapper() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  return <DetailPage id={id} navigate={navigate} />;
+}
 
 class DetailPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: ,
-      keyword: ,
+      note: getNote(props.id),
     };
+
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
+  }
+
+  onDeleteHandler(id) {
+    Swal.fire({
+      title: 'Apakah anda yakin menghapus catatan ini?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNote(id);
+        Swal.fire('Berhasil', 'Catatan anda terhapus');
+        this.props.navigate('/');
+      }
+    });
   }
 
   render() {
     return (
       <section className="DetailWrapper">
-        <h3 className="NotesList_title">Notes Detail</h3>
-        <NotesItem
-          key={}
-          id={}
-          onDelete={}
-          onEdit={}
-          {}
+        <h2 className="DetailTitle">Notes Detail</h2>
+        <DetailNote
+          onDelete={this.onDeleteHandler}
+          id={this.props.id}
+          {...this.state.note}
         />
         <Link to="/notes/new" className="AddFloat">
           <svg
@@ -51,8 +75,8 @@ class DetailPage extends React.Component {
 }
 
 DetailPage.propTypes = {
-  defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
-export default DetailPage;
+export default DetailPageWrapper;

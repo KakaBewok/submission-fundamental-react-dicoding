@@ -88,7 +88,7 @@ body {
 .NotesItem {
   display: flex;
   flex-direction: column;
-  width: 15rem;
+  width: 15rem; /*15*/
   padding: 1.5rem;
   margin: 1.7rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -98,14 +98,29 @@ body {
   background-color: #0081c9;
   color: white;
 }
+
+/* DETAIL ITEM */
+.DetailNote {
+  width: 16rem;
+  margin-bottom: 15rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 .NotesItem:hover {
   transform: translateY(-5px);
   opacity: 0.9;
 }
+.DetailWrapper {
+  margin-top: 7.5rem;
+}
+.DetailTitle {
+  text-align: center;
+  color: var(--primary-color);
+}
 
 /* NOTESLIST */
 .NotesList {
-  width: 100%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -117,15 +132,20 @@ body {
   color: var(--primary-color);
   font-size: 1.5rem;
 }
+.NumberofNotes {
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
 
 /* FORM INPUT */
 .input-container {
-  width: 30rem;
+  width: 16rem;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   margin: 100px auto;
   padding: 40px;
+  margin-bottom: 17rem;
 }
 form {
   display: flex;
@@ -199,9 +219,10 @@ form button.AddNotes:active {
 .navigation ul li a {
   text-decoration: none;
   color: white;
+  margin-right: 6px;
 }
 .navigation ul {
-  width: 10%;
+  width: 15%;
   display: flex;
   justify-content: space-around;
 }
@@ -260,4 +281,38 @@ form button.AddNotes:active {
 }
 a {
   text-decoration: none;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media only screen and (min-width: 600px) {
+  div.DetailNote {
+    width: 40rem;
+    margin-bottom: 35rem;
+  }
+  .NotesItem {
+    width: 15rem;
+  }
+  .input-container {
+    width: 38rem;
+    margin-bottom: 38rem;
+  }
+  .navigation ul {
+    width: 10%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  div.DetailNote {
+    margin-bottom: 5rem;
+  }
+  .NotesItem {
+    width: 15rem;
+  }
+  .input-container {
+    width: 38rem;
+    margin-bottom: 1.5rem;
+  }
+  .navigation ul {
+    width: 10%;
+  }
 }

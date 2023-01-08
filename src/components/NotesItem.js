@@ -1,20 +1,21 @@
 import React from 'react';
 import DeleteButton from './DeleteButton';
-import EditButton from './EditButton';
 import NotesItemTitle from './NotesItemTitle';
 import NotesItemDate from './NotesItemDate';
 import NotesItemContent from './NotesItemContent';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-function NotesItem({ title, createdAt, body, id, onDelete, onEdit }) {
+function NotesItem({ title, createdAt, body, id, onDelete }) {
   return (
     <div className="NotesItem">
-      <NotesItemTitle title={title} />
-      <NotesItemDate createdAt={createdAt} />
-      <NotesItemContent body={body} />
+      <Link to={`/notes/${id}`}>
+        <NotesItemTitle title={title} />
+        <NotesItemDate createdAt={createdAt} />
+        <NotesItemContent body={body} />
+      </Link>
       <div className="Button_group">
         <DeleteButton id={id} onDelete={onDelete} />
-        <EditButton id={id} onEdit={onEdit} />
       </div>
     </div>
   );
@@ -26,7 +27,6 @@ NotesItem.propTypes = {
   body: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
 };
 
 export default NotesItem;
