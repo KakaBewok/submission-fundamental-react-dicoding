@@ -15,17 +15,16 @@ function Navigation() {
         <li>
           <Link to="/">
             <svg
-              // className="Home icon icon-tabler icon-tabler-home"
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-home Home"
+              className="icon icon-tabler icon-tabler-home Home"
               width="33"
               height="33"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="#ffffff"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <polyline points="5 12 3 12 12 3 21 12 19 12" />
@@ -35,19 +34,18 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/add">
+          <Link to="/notes/new">
             <svg
-              className="Add"
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-circle-plus Add"
+              className="icon icon-tabler icon-tabler-circle-plus Add"
               width="33"
               height="33"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="#ffffff"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <circle cx="12" cy="12" r="9" />

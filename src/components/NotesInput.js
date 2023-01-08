@@ -1,5 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
 
 class NotesInput extends React.Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class NotesInput extends React.Component {
   render() {
     return (
       <div>
-        <div class="input-container">
+        <div className="input-container">
           <form onSubmit={this.onSubmit}>
             <h2>Input Notes</h2>
             <input
@@ -130,5 +131,9 @@ class NotesInput extends React.Component {
     );
   }
 }
+
+NotesInput.propTypes = {
+  addNotes: PropTypes.func.isRequired,
+};
 
 export default NotesInput;

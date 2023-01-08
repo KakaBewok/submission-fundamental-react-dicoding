@@ -212,11 +212,10 @@ form button.AddNotes:active {
 /* HOMEPAGE */
 .HomeWrapper {
   margin-top: 6.5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 /* ADDPAGE */
 .AddWrapper {
@@ -224,7 +223,7 @@ form button.AddNotes:active {
 }
 /* SEARCH BAR */
 .search-bar {
-  margin-top: 2rem;
+  margin: 2.5rem 0;
   padding: 0.5rem;
   width: 17rem;
   border-radius: 4px;
@@ -247,4 +246,18 @@ form button.AddNotes:active {
 .Home:hover,
 .Add:hover {
   transform: translateY(-1px);
+}
+.NotesEmpty {
+  margin: 9rem auto;
+}
+/* FOOTER */
+
+.Footer_title {
+  margin: 1rem 0;
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
 }

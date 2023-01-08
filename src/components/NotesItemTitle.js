@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function NotesItemTitle({ title }) {
   return (
@@ -7,4 +8,9 @@ function NotesItemTitle({ title }) {
     </div>
   );
 }
+
+NotesItemTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
 export default NotesItemTitle;

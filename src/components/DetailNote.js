@@ -6,7 +6,7 @@ import NotesItemDate from './NotesItemDate';
 import NotesItemContent from './NotesItemContent';
 import PropTypes from 'prop-types';
 
-function NotesItem({ title, createdAt, body, id, onDelete, onEdit }) {
+function DetailNote({ title, createdAt, body, id, onDelete, onEdit }) {
   return (
     <div className="NotesItem">
       <NotesItemTitle title={title} />
@@ -20,7 +20,7 @@ function NotesItem({ title, createdAt, body, id, onDelete, onEdit }) {
   );
 }
 
-NotesItem.propTypes = {
+DetailNote.propTypes = {
   title: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ NotesItem.propTypes = {
   onEdit: PropTypes.func.isRequired,
 };
 
-export default NotesItem;
+export default DetailNote;

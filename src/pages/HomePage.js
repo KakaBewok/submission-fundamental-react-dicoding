@@ -1,8 +1,10 @@
 import React from 'react';
 import NotesList from '../components/NotesList';
+import Footer from '../components/Footer';
 import SearchBar from '../components/SearchBar';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import {
   getAllNotes,
@@ -86,18 +88,18 @@ class HomePage extends React.Component {
           onEdit={this.onEditHandler}
           onDelete={this.onDeleteHandler}
         />
-        <Link to="/add" className="AddFloat">
+        <Link to="/notes/new" className="AddFloat">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-circle-plus"
+            className="icon icon-tabler icon-tabler-circle-plus"
             width="52"
             height="52"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="#0081c9"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <circle cx="12" cy="12" r="9" />
@@ -105,9 +107,15 @@ class HomePage extends React.Component {
             <line x1="12" y1="9" x2="12" y2="15" />
           </svg>
         </Link>
+        <Footer />
       </section>
     );
   }
 }
+
+HomePage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default HomePageWrapper;

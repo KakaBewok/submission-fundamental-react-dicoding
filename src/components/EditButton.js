@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function EditButton({ id, onEdit }) {
   return (
@@ -9,5 +10,10 @@ function EditButton({ id, onEdit }) {
     </div>
   );
 }
+
+EditButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
 
 export default EditButton;

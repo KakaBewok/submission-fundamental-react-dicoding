@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation';
 import HomePage from '../pages/HomePage';
 import AddPage from '../pages/AddPage';
+import DetailPage from '../pages/DetailPage';
 
 function NotesApp() {
   return (
@@ -13,7 +14,8 @@ function NotesApp() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/add" element={<AddPage />} />
+          <Route path="/notes/new" element={<AddPage />} />
+          <Route path="/notes/:id" element={<DetailPage />} />
         </Routes>
       </main>
     </div>
