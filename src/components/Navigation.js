@@ -1,14 +1,13 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from 'react';
-import LocaleContext from '../contexts/LocaleContext';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiHome, FiLogOut } from 'react-icons/fi';
 import PropTypes from 'prop-types';
+import ToggleTheme from './ToggleTheme';
+import ToggleLocale from './ToggleLocale';
 
 const Navigation = ({ logout, name }) => {
-  const { locale, toggleLocale } = useContext(LocaleContext);
-
   return (
     <nav className="navigation">
       <h1 className="Brand">
@@ -18,9 +17,10 @@ const Navigation = ({ logout, name }) => {
       </h1>
       <ul className="navlink">
         <li>
-          <button className="btn-locale" onClick={toggleLocale}>
-            {locale === 'id' ? 'en' : 'id'}
-          </button>
+          <ToggleTheme />
+        </li>
+        <li>
+          <ToggleLocale />
         </li>
         <li>
           <Link to="/">

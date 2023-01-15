@@ -16,7 +16,7 @@ const LoginPage = ({ loginSuccess }) => {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Login anda berhasil!',
+        title: 'Login success!',
         showConfirmButton: false,
         timer: 1500,
       });

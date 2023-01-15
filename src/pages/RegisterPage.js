@@ -15,7 +15,7 @@ const RegisterPage = () => {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Registrasi anda berhasil!',
+        title: 'Registration success!',
         showConfirmButton: false,
         timer: 1500,
       });
