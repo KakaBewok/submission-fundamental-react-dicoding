@@ -2,12 +2,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
-function Footer() {
+const Footer = () => {
   return (
     <div className="Footer">
       <p className="Footer_title">Noprizal - 2023</p>
     </div>
   );
-}
+};
 
 export default Footer;

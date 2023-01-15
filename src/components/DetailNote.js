@@ -5,7 +5,7 @@ import NotesItemDate from './NotesItemDate';
 import NotesItemContent from './NotesItemContent';
 import PropTypes from 'prop-types';
 
-function DetailNote({ title, createdAt, body, id, onDelete, onEdit }) {
+const DetailNote = ({ title, createdAt, body, id, onDelete }) => {
   return (
     <div className="NotesItem DetailNote">
       <NotesItemTitle title={title} />
@@ -16,7 +16,7 @@ function DetailNote({ title, createdAt, body, id, onDelete, onEdit }) {
       </div>
     </div>
   );
-}
+};
 
 DetailNote.propTypes = {
   title: PropTypes.string.isRequired,

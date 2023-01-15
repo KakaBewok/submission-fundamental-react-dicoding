@@ -1,9 +1,14 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
+import LocaleContext from '../contexts/LocaleContext';
 import { Link } from 'react-router-dom';
+import { FiHome, FiLogOut } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
-function Navigation() {
+const Navigation = ({ logout, name }) => {
+  const { locale, toggleLocale } = useContext(LocaleContext);
+
   return (
     <nav className="navigation">
       <h1 className="Brand">
@@ -13,50 +18,29 @@ function Navigation() {
       </h1>
       <ul className="navlink">
         <li>
+          <button className="btn-locale" onClick={toggleLocale}>
+            {locale === 'id' ? 'en' : 'id'}
+          </button>
+        </li>
+        <li>
           <Link to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-home Home"
-              width="33"
-              height="33"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#ffffff"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <polyline points="5 12 3 12 12 3 21 12 19 12" />
-              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-            </svg>
+            <FiHome />
           </Link>
         </li>
         <li>
-          <Link to="/notes/new">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-circle-plus Add"
-              width="33"
-              height="33"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#ffffff"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <circle cx="12" cy="12" r="9" />
-              <line x1="9" y1="12" x2="15" y2="12" />
-              <line x1="12" y1="9" x2="12" y2="15" />
-            </svg>
-          </Link>
+          <button className="btn-logout" onClick={logout}>
+            {name}
+            <FiLogOut />
+          </button>
         </li>
       </ul>
     </nav>
   );
-}
+};
+
+Navigation.propTypes = {
+  logout: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Navigation;

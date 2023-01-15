@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import LocaleContext from '../contexts/LocaleContext';
 import PropTypes from 'prop-types';
 
-function DeleteButton({ id, onDelete }) {
+const DeleteButton = ({ id, onDelete }) => {
+  const { locale } = useContext(LocaleContext);
+
   return (
     <div>
       <button className="DeleteButton" onClick={() => onDelete(id)}>
-        Delete
+        {locale === 'id' ? 'HAPUS' : 'DELETE'}
       </button>
     </div>
   );
-}
+};
 
 DeleteButton.propTypes = {
   id: PropTypes.string.isRequired,

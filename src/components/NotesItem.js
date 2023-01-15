@@ -6,7 +6,7 @@ import NotesItemContent from './NotesItemContent';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function NotesItem({ title, createdAt, body, id, onDelete }) {
+const NotesItem = ({ title, createdAt, body, id, onDelete }) => {
   return (
     <div className="NotesItem">
       <Link to={`/notes/${id}`}>
@@ -19,7 +19,7 @@ function NotesItem({ title, createdAt, body, id, onDelete }) {
       </div>
     </div>
   );
-}
+};
 
 NotesItem.propTypes = {
   title: PropTypes.string.isRequired,
