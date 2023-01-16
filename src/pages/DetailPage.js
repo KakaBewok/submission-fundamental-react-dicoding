@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom';
 import { getNote, deleteNote } from '../utils/network-data';
 import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
+import Swal from 'sweetalert2';
+import Loading from '../components/isLoading';
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -36,17 +38,16 @@ const DetailPage = () => {
 
   const onDeleteHandler = async (id) => {
     await deleteNote(id);
+    Swal.fire('Success', 'Delete success!', 'success');
 
     navigate('/');
   };
 
   if (isLoading) {
     return (
-      <>
-        <p style={{ marginTop: '20rem', textAlign: 'center' }}>
-          LOADING . . . . . . . . . . . . . .
-        </p>
-      </>
+      <div>
+        <Loading />
+      </div>
     );
   }
 

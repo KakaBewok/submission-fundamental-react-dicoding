@@ -7,23 +7,47 @@
   padding: 0;
 }
 :root {
-  --primary-color: #0081c9;
-  --secondary-color: #5bc0f8;
-  --tertiary-color: #86e5ff;
-  --danger-color: rgb(255, 56, 86);
-  --font-color: #121212;
-  --background-color: #eafdfc;
+  --bg-body: #eeeeee;
+  --bg-nav: #0081c9;
+  --bg-card: #0081c9;
+  --bg-card-detail: #0081c9;
+  --bg-form: #0081c9;
+  --bg-form-input: #eeeeee;
+  --bg-button-delete: rgb(255, 56, 86);
+  --bg-shadow-button-delete: rgb(201, 46, 70);
+  --bg-button-add: #243763;
+  --text-color: #0081c9;
+  --text: #eeeeee;
+  --text-button-add: #eeeeee;
+  --button-login: #0081c9;
+  --button-regist: #0081c9;
 }
 
 [data-theme='dark'] {
-  --font-color: #eee;
-  --background-color: #333;
+  --bg-body: #121212;
+  --bg-nav: #00337c;
+  --bg-card: #00337c;
+  --bg-card-detail: #00337c;
+  --bg-form: #00337c;
+  --bg-form-input: #eeeeee;
+  --bg-button-delete: rgb(255, 56, 86);
+  --bg-shadow-button-delete: rgb(201, 46, 70);
+  --bg-button-add: #eeeeee;
+  --text-color: #eeeeee;
+  --text: #eeeeee;
+  --text-button-add: #00337c;
 }
 
 body {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--tertiary-color);
+  background-color: var(--bg-body);
+}
+/* LOADING */
+.Loading p.isLoading {
+  margin-top: 20rem;
+  text-align: center;
+  color: #82aae3;
 }
 
 /* DELETE BUTTON */
@@ -32,46 +56,22 @@ body {
   padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
   border: 0;
-  background-color: var(--danger-color);
+  background-color: var(--bg-button-delete);
   letter-spacing: 1px;
   font-size: 11px;
   transition: all 0.3s ease;
-  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
-  color: hsl(0, 0%, 100%);
+  box-shadow: var(--bg-shadow-button-delete) 0px 7px 0px 0px;
+  color: var(--text);
 }
 .DeleteButton:hover {
-  box-shadow: rgb(201, 46, 70) 0px 4px 0px 0px;
+  box-shadow: var(--bg-shadow-button-delete) 0px 4px 0px 0px;
 }
 .DeleteButton:active {
-  background-color: rgb(255, 56, 86);
-  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  background-color: var(--bg-button-delete);
+  box-shadow: var(--bg-shadow-button-delete) 0px 0px 0px 0px;
   transform: translateY(3px);
   transition: 150ms;
 }
-
-/* EDIT BUTTON */
-/* .EditButton {
-  cursor: pointer;
-  margin-left: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.5rem;
-  border: 0;
-  background-color: #ff7b54;
-  letter-spacing: 1px;
-  font-size: 11px;
-  transition: all 0.3s ease;
-  box-shadow: #ffb26b 0px 7px 0px 0px;
-  color: hsl(0, 0%, 100%);
-}
-.EditButton:hover {
-  box-shadow: #ffb26b 0px 4px 0px 0px;
-}
-.EditButton:active {
-  background-color: #ff7b54;
-  box-shadow: #ff7b54 0px 0px 0px 0px;
-  transform: translateY(3px);
-  transition: 150ms;
-} */
 
 /* BUTTON GROUP */
 .Button_group {
@@ -102,14 +102,14 @@ body {
   border-radius: 10px;
   transition: all 350ms;
   cursor: pointer;
-  background-color: var(--primary-color);
-  color: var(--background-color);
+  background-color: var(--bg-card);
+  color: var(--text);
 }
 
 /* DETAIL ITEM */
 .DetailNote {
-  color: var(--background-color);
-  background-color: var(--primary-color);
+  color: var(--text);
+  background-color: var(--bg-card);
   width: 16rem;
   margin-bottom: 15rem;
   margin-left: auto;
@@ -124,25 +124,24 @@ body {
 }
 .DetailTitle {
   text-align: center;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 /* NOTESLIST */
 .NotesList {
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .NotesList_title {
   text-align: center;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.5rem;
 }
 .NumberofNotes {
-  color: var(--font-color);
+  color: var(--text-color);
   font-size: 0.8rem;
   margin-top: 4px;
 }
@@ -150,7 +149,7 @@ body {
 /* FORM INPUT */
 .input-container {
   width: 16rem;
-  background-color: var(--background-color);
+  background-color: var(--bg-form);
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   margin: 100px auto;
@@ -164,7 +163,7 @@ form {
 form h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: var(--primary-color);
+  color: var(--text);
 }
 form .InputTitle {
   height: 36px;
@@ -173,7 +172,7 @@ form .InputTitle {
   padding: 0 15px;
   margin-top: 20px;
   font-size: 14px;
-  background-color: var(--background-color);
+  background-color: var(--bg-form-input);
 }
 form .InputContent {
   border-radius: 3px;
@@ -185,28 +184,30 @@ form .InputContent {
   max-height: 15rem;
   min-height: 5rem;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--background-color);
+  background-color: var(--bg-form-input);
 }
 #TitleCount,
 #ContentCount {
-  color: var(--font-color);
+  color: var(--text) !important;
   margin-left: auto;
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 5px;
 }
 form button.AddNotes {
   height: 36px;
-  background-color: var(--primary-color);
+  background-color: var(--bg-button-add);
   border-radius: 3px;
   border: none;
-  color: var(--background-color);
+  color: var(--text-button-add);
   font-size: 14px;
   transition: all 340ms;
   cursor: pointer;
   margin-top: 20px;
 }
 form button.AddNotes:hover {
-  background-color: #205295;
+  background-color: var(--text-button-add);
+  color: var(--bg-button-add);
+  border: 1px solid var(--text);
 }
 form button.AddNotes:active {
   transform: translateY(-3px);
@@ -214,8 +215,8 @@ form button.AddNotes:active {
 /* NAVIGATION */
 .navigation {
   padding: 1.2rem;
-  background-color: var(--primary-color);
-  color: var(--background-color);
+  background-color: var(--bg-nav);
+  color: var(--text);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -236,11 +237,11 @@ form button.AddNotes:active {
 }
 .navigation ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--text);
   margin-right: 6px;
 }
 .navigation ul {
-  width: 53%;
+  width: 63%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -253,18 +254,24 @@ form button.AddNotes:active {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: var(--background-color);
+  color: var(--text);
   font-size: 22px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }
-.btn-locale {
+.btn-locale,
+.btn-theme {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: var(--background-color);
-  font-size: 22px;
+  color: var(--text);
+  font-size: 20px;
+  margin-top: 5px;
+}
+.navigation ul li:nth-child(3) {
+  margin-top: 3px;
 }
 
 /* HOMEPAGE */
@@ -299,17 +306,111 @@ form button.AddNotes:active {
 }
 .NotesEmpty {
   margin: 9rem auto;
+  color: #82aae3;
 }
 /* FOOTER */
 .Footer_title {
   margin: 1rem 0;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-weight: bold;
 }
 a {
   text-decoration: none;
   color: white;
+}
+
+/* LOGIN PAGE EDIT*/
+.login-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.login-wrapper {
+  max-width: 70%;
+  background: white;
+  margin: 8.5rem auto 21rem;
+  padding: 30px 35px;
+  border-radius: 7px;
+}
+
+.label-username {
+  font-size: 11pt;
+  margin-top: 1.3rem;
+}
+.label-password {
+  font-size: 11pt;
+}
+
+.form_login {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 7px;
+  font-size: 11pt;
+  margin-bottom: 1rem;
+}
+
+.btn-login {
+  background: var(--button-login);
+  color: var(--text);
+  font-size: 11pt;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  transition: all 0.4s;
+}
+.btn-login:hover {
+  opacity: 0.7;
+}
+
+.regist {
+  color: var(--button-login);
+}
+
+/* REGIST PAGE EDIT*/
+.regist-wrapper {
+  width: 70%;
+  background: white;
+  margin: 8rem auto 21rem;
+  padding: 30px 35px;
+  border-radius: 7px;
+}
+.regist-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.label-name {
+  font-size: 11pt;
+  margin-top: 1.3rem;
+}
+.label-password,
+.label-username-regist {
+  font-size: 11pt;
+}
+.form_regist {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  font-size: 11pt;
+  margin-bottom: 1rem;
+}
+.btn-regist {
+  background: var(--button-regist);
+  color: var(--text);
+  font-size: 11pt;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  transition: all 0.4s;
+}
+.btn-regist:hover {
+  opacity: 0.7;
+}
+.login {
+  color: var(--button-regist);
 }
 
 /* RESPONSIVE */
@@ -326,11 +427,24 @@ a {
     margin-bottom: 38rem;
   }
   .navigation ul {
-    width: 28%;
+    width: 35%;
   }
   .btn-logout {
     font-size: 28px;
     gap: 10px;
+  }
+  .login-wrapper {
+    width: 55%;
+    margin: 8.5rem auto 39rem;
+    padding: 30px 35px;
+    border-radius: 7px;
+  }
+  .regist-wrapper {
+    width: 55%;
+    background: white;
+    margin: 8rem auto 39rem;
+    padding: 30px 35px;
+    border-radius: 7px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -345,10 +459,24 @@ a {
     margin-bottom: 1.5rem;
   }
   .navigation ul {
-    width: 18%;
+    width: 23%;
   }
   .btn-logout {
     font-size: 28px;
     gap: 10px;
+  }
+  .login-wrapper {
+    width: 350px;
+    background: white;
+    margin: 8.5rem auto 4.5rem;
+    padding: 30px 35px;
+    border-radius: 7px;
+  }
+  .regist-wrapper {
+    width: 350px;
+    background: white;
+    margin: 8rem auto 2rem;
+    padding: 30px 35px;
+    border-radius: 7px;
   }
 }

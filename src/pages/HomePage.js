@@ -6,6 +6,8 @@ import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getActiveNotes, deleteNote } from '../utils/network-data';
 import LocaleContext from '../contexts/LocaleContext';
+import Swal from 'sweetalert2';
+import Loading from '../components/isLoading';
 
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,6 +34,8 @@ const HomePage = () => {
     // update the contacts state from network.js
     const { data } = await getActiveNotes();
     setNotes(data);
+
+    Swal.fire('Success', 'Delete success!', 'success');
   }
 
   function onKeywordChangeHandler(keyword) {
@@ -45,11 +49,9 @@ const HomePage = () => {
 
   if (isLoading) {
     return (
-      <>
-        <p style={{ marginTop: '20rem', textAlign: 'center' }}>
-          LOADING . . . . . . . . . . . . . .
-        </p>
-      </>
+      <div>
+        <Loading />
+      </div>
     );
   }
 
