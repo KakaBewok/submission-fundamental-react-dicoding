@@ -16,7 +16,7 @@ const DetailPage = () => {
   const { locale } = useContext(LocaleContext);
 
   const [note, setNote] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getNoteFunc = async () => {
@@ -27,13 +27,10 @@ const DetailPage = () => {
           note: data,
         };
       });
+      setIsLoading(false);
     };
 
     getNoteFunc();
-
-    return () => {
-      setIsLoading(true);
-    };
   }, []);
 
   const onDeleteHandler = async (id) => {

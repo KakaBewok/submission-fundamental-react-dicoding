@@ -39,8 +39,8 @@ const Navigation = ({ logout, name }) => {
 };
 
 Navigation.propTypes = {
-  logout: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  logout: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default Navigation;
